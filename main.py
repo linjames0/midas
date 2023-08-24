@@ -9,11 +9,20 @@ dotenv.load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # twilio set up
-twilio_phone_number = "18444275958"
+# twilio_phone_number = "+18444275958"
 
-account_sid = os.getenv("TWILIO_ACCOUNT_SID")
-auth_token = os.getenv("TWILIO_AUTH_TOKEN")
-client = Client(account_sid, auth_token)
+# account_sid = os.getenv("TWILIO_ACCOUNT_SID")
+# auth_token = os.getenv("TWILIO_AUTH_TOKEN")
+# client = Client(account_sid, auth_token)
+
+# call = client.calls.create(
+#                         record=True,
+#                         url='http://demo.twilio.com/docs/voice.xml',
+#                         to='+18444275958',
+#                         from_=twilio_phone_number
+# )
+
+# print(call.sid)
 
 bank_history = []
 cardholder_history = []
@@ -37,7 +46,7 @@ while disputing:
         text = "Cardholder: " + input(answer + "\n")
         if text == "quit":
                 disputing = False
-        if answer == "Have a good day.":
+        if "Have a good day." in answer:
                 disputing = False
 
         bank_history.append(answer)
