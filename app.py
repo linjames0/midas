@@ -30,9 +30,6 @@ def voice():
     global disputing
     resp = VoiceResponse()
 
-    # with resp.gather(input="dtmf", action="/digits", num_digits=17) as gather:
-    #         gather.say("Please enter your credit card number, followed by the pound key.")
-
     # get user speech
     with resp.gather(input='speech', action='/handle-record', timeout=3) as gather:
             gather.say(greeting)
@@ -59,8 +56,6 @@ def handle_record():
     cardholder_history.append("Cardholder: " + user_speech)
     conversation_history = "\n".join(bank_history[i] + " " + cardholder_history[i] for i in range(len(bank_history)))
     print(conversation_history)
-
-    print("hello 1")
 
     # take in the user input and return the AI answer
     answer = openai.ChatCompletion.create(
