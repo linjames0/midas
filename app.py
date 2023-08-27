@@ -31,7 +31,7 @@ def voice():
     resp = VoiceResponse()
 
     # get user speech
-    with resp.gather(input='speech', action='/handle-record', timeout=3) as gather:
+    with resp.gather(input='speech', action='/handle-record', timeout=4) as gather:
             gather.say(greeting)
 
     return str(resp)
@@ -80,7 +80,7 @@ def handle_record():
     
     # continue with the conversation
     else:
-        with resp.gather(input="speech", action="/handle-record", timeout=3) as gather:
+        with resp.gather(input="speech", action="/handle-record", timeout=4) as gather:
             gather.say(answer[6:])
 
     return str(resp)
