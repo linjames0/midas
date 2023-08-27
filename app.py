@@ -3,18 +3,17 @@ from twilio.twiml.voice_response import VoiceResponse, Gather
 import openai
 import os
 import dotenv
-from twilio.rest import Client
 
 # API key stored in environment variable
 dotenv.load_dotenv()
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
-greeting = "Hello, I'm here to assist with credit card disputes. How can I help you today?"
 
+# initialize context variables
 bank_history = []
 cardholder_history = []
 conversation_history = ""
-disputing = True
+greeting = "Hello, I'm here to assist with credit card disputes. How can I help you today?"
 
 bank_history.append("Bank: " + greeting)
 
@@ -27,7 +26,8 @@ def voice():
     global bank_history
     global cardholder_history
     global conversation_history
-    global disputing
+
+    # initialize Twilio response
     resp = VoiceResponse()
 
     # get user speech
